@@ -3,12 +3,12 @@
 
 struct testcases{
 
-	int *input, addData, *output;
+	int input, addData, output;
 }tests[4] = {		//negative number for end of sequence
-	{ (int[3]){ 1, 2, -1 }, 3, (int[4]){ 1, 2, 3, -1 } },
-	{ (int[5]){0, 1, 18, 20,-1}, 10, (int[6]){ 0, 1, 10, 18, 20,-1 } },
-	{ (int[2]){1,-1}, 2, (int[3]){ 1, 2,-1 } },
-	{ (int[5]){1, 1, 1, 1,-1}, 1, (int[6]){ 1, 1, 1, 1, 1,-1} }
+	{ 12,3,123 },
+	{ 12345,3,123345 },
+	{ 5,3,35 },
+	{ 1111,1,11111 }
 };
 
 struct node
@@ -34,7 +34,7 @@ void main(){
 void testcaseCheck(){
 
 	cll head1, head2;
-	Result(NULL, 0, createCLinkedList((int[1]){0}));
+	Result(NULL, 0, createCLinkedList(0));
 	for (int i = 0; i < 4; i++){
 		printf("\n");
 		Result(createCLinkedList(tests[i].input), tests[i].addData, createCLinkedList(tests[i].output));
@@ -76,25 +76,21 @@ cll addNodeToCll(cll head, int num){
 	}
 }
 
-cll createCLinkedList(int* num) {
-	cll head = NULL;
-	cll temp = NULL;
-	int i = 0;
-	
-	while (num[i]>=0) {
-		cll newNode = createNode(num[i]);
-
-		if (head == NULL)
-			head = temp = newNode;
-		else{
-			temp->next = newNode;
-			temp = temp->next;
-		}
-		i++;
+cll createCLinkedList(int num) {
+	cll start = NULL, newNode, end = NULL;
+	newNode = createNode(num % 10);
+	newNode->next = start;
+	start = end = newNode;
+	num /= 10;
+	while (num)
+	{
+		newNode = createNode(num % 10);
+		newNode->next = start;
+		start = newNode;
+		num /= 10;
 	}
-	temp->next = head;
-
-	return head;
+	end->next = start;
+	return start;
 }
 cll createNode(int num){
 	cll temp = (cll)malloc(sizeof(struct node));
