@@ -16,15 +16,16 @@ struct node
 };
 
 typedef struct node * sll;
-void start();
+
+void testcaseCheck();
 struct node * createLinkedList(int num);
 struct node * createNode(int num);
-void testcaseCheck();
 sll merge(sll, sll);
 sll merge2(sll, sll);
 sll append(sll head, int e);
 int compare(struct node *result, int num);
 void Result(sll, sll, int);
+
 void main(){
 	testcaseCheck();
 	getchar();
@@ -41,26 +42,6 @@ void testcaseCheck(){
 		head1 = createLinkedList(tests[i].input1);
 		head2 = createLinkedList(tests[i].input2);
 		Result(head1, head2, createLinkedList(tests[i].merge));
-	}
-}
-void Result(sll head1,sll head2,int testresult){
-	sll result;
-	printf("\n");
-	result = merge(head1, head2);
-	compare(result, testresult);
-	printf("\t\t");
-	result = merge2(head1, head2);
-	compare(result, testresult);
-}
-void start(){
-	sll l1, l2,result;
-	l1 = createLinkedList(123456);
-	l2 = createLinkedList(12334);
-	result = merge(l1, l2);
-	while (result!=NULL)
-	{
-		printf("%d", result->num);
-		result = result->next;
 	}
 }
 
@@ -170,4 +151,14 @@ sll merge2(sll head1, sll head2){
 		head2->next = merge2(head1->next, head2->next);
 		return head2;
 	}
+}
+
+void Result(sll head1, sll head2, int testresult){
+	sll result;
+	printf("\n");
+	result = merge(head1, head2);
+	compare(result, testresult);
+	printf("\t\t");
+	result = merge2(head1, head2);
+	compare(result, testresult);
 }
