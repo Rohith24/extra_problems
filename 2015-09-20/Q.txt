@@ -1,0 +1,6 @@
+1. 	Given a unsigned number as a string input (it can be of length, max 10000 chars) write a function to find whether the number is divisible by 11 or not
+2. 	An unsigned number Q is formed by taking input P which is an unsigned integer in string format,
+	K: number of times P repeated to form Q. write a function to find whether the number Q is divisible by 11 or not
+	ex: Q: 123123123 P: 123 K:3
+3. 	Same string as Q 2, write a function for divisibility by 3
+4. 	Given two strings which are unsigned integer numbers (in string format) write an adder to add the numbers. Lenghts of both can be different.
