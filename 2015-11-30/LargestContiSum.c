@@ -34,7 +34,7 @@ int largerstcontiSum(int* Array, int len,int *output){
 	int tempSum = 0;
 	int a, b, s, i;
 	if (Array != NULL){
-		a = b = s = i = 0;
+		a = b = s = 0;
 		for (i = 0; i < len; i++) {
 			tempSum += Array[i];
 			if (tempSum > sum) {
